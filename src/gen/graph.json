@@ -1,0 +1,350 @@
+{
+  "counts": {
+    "nodes": 19,
+    "edges": 28,
+    "topLevelNodes": 13
+  },
+  "constants": {
+    "W": 1,
+    "audioWaveDispSize": [
+      120.0,
+      80.0
+    ],
+    "WFrom": "",
+    "enableAudioTestTools": false
+  },
+  "nodes": [
+    {
+      "name": "ToStereo",
+      "class": "cMonoToStereo",
+      "config": "#i",
+      "parent": null,
+      "container": false
+    },
+    {
+      "name": "AudioPlayer",
+      "class": "cAudioPlayer",
+      "config": "",
+      "parent": null,
+      "container": false,
+      "addDSPMetaData": false,
+      "createParams": {
+        "Loop": true
+      }
+    },
+    {
+      "name": "NoiseFX",
+      "class": "cContainer",
+      "config": "",
+      "parent": null,
+      "container": true,
+      "postFlag": false
+    },
+    {
+      "name": "NoiseFX.Noise",
+      "class": "cNoiseFX",
+      "config": "kpId,990102,types,16,driverprio,5",
+      "parent": "NoiseFX",
+      "container": false,
+      "addDSPMetaData": false
+    },
+    {
+      "name": "NoiseFX.SComp",
+      "class": "cSimpleComp",
+      "config": "sidechain",
+      "parent": "NoiseFX",
+      "container": false,
+      "addDSPMetaData": false
+    },
+    {
+      "name": "NoiseFX.WaveVizOutputNoise",
+      "class": "cAudioWaveViz",
+      "config": "120",
+      "parent": "NoiseFX",
+      "container": false,
+      "addDSPMetaData": false
+    },
+    {
+      "name": "NoisePostFX",
+      "class": "cContainer",
+      "config": "",
+      "parent": null,
+      "container": true,
+      "postFlag": true
+    },
+    {
+      "name": "NoisePostFX.Noise",
+      "class": "cNoiseFX",
+      "config": "kpId,990102,types,16,driverprio,0",
+      "parent": "NoisePostFX",
+      "container": false,
+      "addDSPMetaData": false
+    },
+    {
+      "name": "NoisePostFX.SComp",
+      "class": "cSimpleComp",
+      "config": "sidechain",
+      "parent": "NoisePostFX",
+      "container": false,
+      "addDSPMetaData": false
+    },
+    {
+      "name": "NoisePostFX.WaveVizOutputNoise",
+      "class": "cAudioWaveViz",
+      "config": "120",
+      "parent": "NoisePostFX",
+      "container": false,
+      "addDSPMetaData": false
+    },
+    {
+      "name": "Wobble",
+      "class": "cWobbler",
+      "config": "size,120",
+      "parent": null,
+      "container": false,
+      "addDSPMetaData": false
+    },
+    {
+      "name": "Magnetic",
+      "class": "cFlutter",
+      "config": "size,120",
+      "parent": null,
+      "container": false,
+      "addDSPMetaData": false
+    },
+    {
+      "name": "Dist",
+      "class": "cPlugChain",
+      "config": "@plugChainDist",
+      "parent": null,
+      "container": false,
+      "addDSPMetaData": false,
+      "configRef": "kPlugChainDist"
+    },
+    {
+      "name": "DistMix",
+      "class": "cGain",
+      "config": "nada",
+      "parent": null,
+      "container": false,
+      "addDSPMetaData": false
+    },
+    {
+      "name": "Digital",
+      "class": "cBitColor",
+      "config": "",
+      "parent": null,
+      "container": false,
+      "addDSPMetaData": false
+    },
+    {
+      "name": "Space",
+      "class": "cResoX",
+      "config": "",
+      "parent": null,
+      "container": false,
+      "addDSPMetaData": false
+    },
+    {
+      "name": "EQ_Post",
+      "class": "cPlugChain",
+      "config": "@plugchainMasterFilter",
+      "parent": null,
+      "container": false,
+      "addDSPMetaData": false,
+      "configRef": "kPlugChainMasterFilter"
+    },
+    {
+      "name": "EQ_Post_Tone",
+      "class": "cPlugChain",
+      "config": "@plugchainToneControl",
+      "parent": null,
+      "container": false,
+      "addDSPMetaData": false,
+      "configRef": "kPlugChainToneControl"
+    },
+    {
+      "name": "Width",
+      "class": "cStereoWidth",
+      "config": "",
+      "parent": null,
+      "container": false,
+      "addDSPMetaData": false
+    }
+  ],
+  "edges": [
+    {
+      "from": "NoiseFX.in",
+      "to": "NoiseFX.Noise.in",
+      "condition": "",
+      "origin": "NoiseFX"
+    },
+    {
+      "from": "NoiseFX.Noise.out",
+      "to": "NoiseFX.SComp.in",
+      "condition": "",
+      "origin": "NoiseFX"
+    },
+    {
+      "from": "NoiseFX.in",
+      "to": "NoiseFX.SComp.inSidechain",
+      "condition": "",
+      "origin": "NoiseFX"
+    },
+    {
+      "from": "NoiseFX.SComp.out",
+      "to": "NoiseFX.WaveVizOutputNoise.in",
+      "condition": "Noise_Enable",
+      "origin": "NoiseFX"
+    },
+    {
+      "from": "NoiseFX.WaveVizOutputNoise.out",
+      "to": "NoiseFX.out",
+      "condition": "",
+      "origin": "NoiseFX"
+    },
+    {
+      "from": "NoisePostFX.in",
+      "to": "NoisePostFX.Noise.in",
+      "condition": "",
+      "origin": "NoisePostFX"
+    },
+    {
+      "from": "NoisePostFX.Noise.out",
+      "to": "NoisePostFX.SComp.in",
+      "condition": "",
+      "origin": "NoisePostFX"
+    },
+    {
+      "from": "NoisePostFX.in",
+      "to": "NoisePostFX.SComp.inSidechain",
+      "condition": "",
+      "origin": "NoisePostFX"
+    },
+    {
+      "from": "NoisePostFX.SComp.out",
+      "to": "NoisePostFX.WaveVizOutputNoise.in",
+      "condition": "Noise_Enable",
+      "origin": "NoisePostFX"
+    },
+    {
+      "from": "NoisePostFX.WaveVizOutputNoise.out",
+      "to": "NoisePostFX.out",
+      "condition": "",
+      "origin": "NoisePostFX"
+    },
+    {
+      "from": "inAudio",
+      "to": "ToStereo.inMono",
+      "condition": "",
+      "origin": "spec"
+    },
+    {
+      "from": "ToStereo.out",
+      "to": "NoiseFX.in",
+      "condition": "InLevel",
+      "origin": "spec"
+    },
+    {
+      "from": "NoiseFX.out",
+      "to": "Wobble.in",
+      "condition": "!NoisePost",
+      "origin": "spec"
+    },
+    {
+      "from": "Magnetic.out",
+      "to": "NoisePostFX.in",
+      "condition": "",
+      "origin": "spec"
+    },
+    {
+      "from": "NoisePostFX.out",
+      "to": "Width.in",
+      "condition": "NoisePost",
+      "origin": "spec"
+    },
+    {
+      "from": "ToStereo.out",
+      "to": "Wobble.in",
+      "condition": "InLevel",
+      "origin": "spec"
+    },
+    {
+      "from": "Wobble.out",
+      "to": "DistMix.in",
+      "condition": "!Dist_MixInternal*Dist_Enable",
+      "origin": "spec"
+    },
+    {
+      "from": "Wobble.out",
+      "to": "Digital.in",
+      "condition": "!Dist_Enable",
+      "origin": "spec"
+    },
+    {
+      "from": "Wobble.out",
+      "to": "Dist.in",
+      "condition": "Dist_Enable*Dist_InGain*Dist_MixInternal",
+      "origin": "spec"
+    },
+    {
+      "from": "Dist.out",
+      "to": "DistMix.in",
+      "condition": "Dist_Enable*Dist_OutGain",
+      "origin": "spec"
+    },
+    {
+      "from": "DistMix.out",
+      "to": "Digital.in",
+      "condition": "",
+      "origin": "spec"
+    },
+    {
+      "from": "Digital.out",
+      "to": "Space.in",
+      "condition": "",
+      "origin": "spec"
+    },
+    {
+      "from": "Space.out",
+      "to": "EQ_Post.in",
+      "condition": "EQ_Post_Enable",
+      "origin": "spec"
+    },
+    {
+      "from": "EQ_Post.out",
+      "to": "EQ_Post_Tone.in",
+      "condition": "EQ_Post_Enable",
+      "origin": "spec"
+    },
+    {
+      "from": "Space.out",
+      "to": "Magnetic.in",
+      "condition": "!EQ_Post_Enable",
+      "origin": "spec"
+    },
+    {
+      "from": "EQ_Post_Tone.out",
+      "to": "Magnetic.in",
+      "condition": "EQ_Post_Tone_Amount",
+      "origin": "spec"
+    },
+    {
+      "from": "Magnetic.out",
+      "to": "Width.in",
+      "condition": "",
+      "origin": "spec"
+    },
+    {
+      "from": "Width.out",
+      "to": "outAudio",
+      "condition": "OutLevel*OutGainEnable",
+      "origin": "spec"
+    }
+  ],
+  "caveats": [
+    "config \"@plugChainDist\" es una referencia: el texto exacto está en src/gen/PlugChainText.gen.cpp (kPlugChainDist y compañía).",
+    "audioWaveDispSize[W] con W=1 (LuaSystem/) y audioWaveDispSize={240/2,160/2} () -> 120.",
+    "AudioRecorder (y las conexiones de AudioPlayer/Width hacia él) sólo existen con Config.enableAudioTestTools = true; en el build de referencia es false."
+  ]
+}

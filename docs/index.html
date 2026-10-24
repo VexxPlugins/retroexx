@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retroexx · character, noise and space for macOS</title>
+<meta name="description" content="Retroexx, by Vexx Audio: a character, noise and space processor for macOS in AU and VST3. Six modules, 58 host parameters, ten factory presets.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0c0f" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Retroexx · Vexx Audio">
+<meta property="og:description" content="Character, noise and space for macOS. AU and VST3. Six modules, 58 host parameters, ten factory presets.">
+<meta property="og:image" content="https://vexxplugins.github.io/retroexx/images/retroexx-editor.png">
+<link rel="icon" href="assets/logomark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+<script>
+  // Sets the theme before first paint: a stored choice, else the system one.
+  (function () {
+    var d = document.documentElement;
+    d.classList.add("js");
+    var stored = null;
+    try { stored = localStorage.getItem("theme"); } catch (e) {}
+    d.dataset.theme = stored || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  })();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap head-inner">
+    <a class="brand" href="../">
+      <img src="assets/logomark.svg" width="34" height="34" alt="">
+      <span class="brand-text">
+        <span class="brand-name">VEXX AUDIO</span>
+        <span class="brand-sub">Retroexx</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="#modules">Modules</a>
+      <a href="#release">Release</a>
+      <a href="#build">Build</a>
+      <a href="https://github.com/VexxPlugins/retroexx">Source</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero wrap">
+    <p class="eyebrow">Vexx Audio</p>
+    <h1>Character, noise and space.</h1>
+    <p class="lead">
+      Retroexx is a character, noise and space processor for macOS in AU and VST3. Six modules in
+      series, a master strip, and an interface that reports itself.
+    </p>
+    <p class="hero-cta">
+      <a class="btn" href="https://github.com/VexxPlugins/retroexx">Source on GitHub</a>
+      <a class="link-quiet" href="#build">How to build it</a>
+    </p>
+    <figure class="plate">
+      <img src="images/retroexx-editor.png" width="1240" height="957"
+           alt="The Retroexx editor: six module columns with their screens and large Amount knobs, a preset window in the header and a master strip with cut filters, tone, width and gain.">
+      <figcaption>The editor with all six modules active. The screens show live visualisers built from each module's own audio.</figcaption>
+    </figure>
+  </section>
+
+  <section class="wrap product">
+    <h2>What it does</h2>
+    <p class="measure">
+      Six modules in series across a mix or an instrument, then a master strip: cut filters, tone,
+      stereo width and gain. Each module has its own Amount and Enable, and the MAGNITUDE control in
+      the header scales all six macros at once.
+    </p>
+    <dl class="specs">
+      <div><dt>Host parameters</dt><dd>58</dd></div>
+      <div><dt>Latency</dt><dd>64 <span>samples</span></dd></div>
+      <div><dt>Formats</dt><dd>AU <span>and</span> VST3</dd></div>
+      <div><dt>Factory presets</dt><dd>10</dd></div>
+    </dl>
+  </section>
+
+  <section class="wrap" id="modules">
+    <h2>Six modules</h2>
+    <p class="measure">
+      The noise is synthesised here, with our own random generators and filters. The textures are
+      drawn in code and the presets are original: the plugin ships no third-party assets.
+    </p>
+    <table>
+      <caption class="visually-hidden">Modules and their controls</caption>
+      <thead>
+        <tr><th scope="col">Module</th><th scope="col">What it does</th><th scope="col">Controls</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">NOISE</th><td>16 synthesised noise types: vinyl, tape, cassette, hum, surface</td><td>Type, Amount, Tone, Follow, Duck, routing</td></tr>
+        <tr><th scope="row">WOBBLE</th><td>Wow and flutter on a fractional delay line, with two LFOs</td><td>Amount, WOW⇄FLUTTER, Rate, Mix</td></tr>
+        <tr><th scope="row">MAGNETIC</th><td>Tape wear: amplitude modulation and dropouts</td><td>Amount, WEAR⇄FLUTTER, Rate, Dropouts, Stereo</td></tr>
+        <tr><th scope="row">DIST</th><td>Six saturation stages: tubes, transformer, transistor, clipping</td><td>Type, Amount, Mix, filters</td></tr>
+        <tr><th scope="row">DIGITAL</th><td>Bit crush and sample-rate reduction with antialiasing</td><td>Amount, RATE⇄BITS, Smooth, Mix, filters</td></tr>
+        <tr><th scope="row">SPACE</th><td>A 12-resonator bank, four allpass stages and a pre-delay</td><td>Amount, Decay, Dampen/Soften, Pre-delay</td></tr>
+        <tr><th scope="row">MASTER</th><td>Soft and hard cut filters, tone, stereo width and gain</td><td>CUT, TONE, WIDTH, IN/OUT</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="wrap split" id="interface">
+    <div class="split-text">
+      <h2>The interface reports itself</h2>
+      <p>
+        Hovering a module column turns its screen into a trip computer: the name of the control under
+        the mouse and its value in italic seven-segment digits, with the unit.
+      </p>
+      <p>
+        With no hover it goes back to the module name and a live visualiser. NOISE shows a min/max
+        oscilloscope, SPACE two rings of L/R energy, MAGNETIC the output/input gain of each channel.
+        Every visualiser is driven by the audio the module is producing.
+      </p>
+    </div>
+    <figure class="plate split-figure">
+      <img src="images/retroexx-trip-computer.png" width="1240" height="957"
+           alt="The same editor in trip computer mode: each column screen shows a seven-segment readout of one parameter, for example FOCUS 0 to 100 percent, DECAY 80 percent and RATE 50 percent.">
+      <figcaption>Trip computer: the values of each column, in seven-segment digits.</figcaption>
+    </figure>
+  </section>
+
+  <section class="wrap state" id="release">
+    <h2>Current release</h2>
+    <p class="measure">
+      Version 0.1 is the first release: six modules, the master strip and the full host surface of
+      58 parameters, with ten factory presets and a state format of its own. It runs as AU and VST3
+      on macOS, at any buffer size.
+    </p>
+    <p class="pull">It just works. Load it and play.</p>
+    <p class="measure">
+      Retroexx is free to use and its source is open. If something does not behave as documented,
+      <a href="https://github.com/VexxPlugins/retroexx/issues">open an issue</a>.
+    </p>
+  </section>
+
+  <section class="wrap build" id="build">
+    <h2>Build it</h2>
+    <p class="measure">
+      macOS on Apple Silicon, CMake 3.22 or newer and the Xcode toolchain. The core downloads nothing;
+      the plugin fetches JUCE 8.0.13 the first time.
+    </p>
+    <pre><code>cmake -S . -B build
+cmake --build build -j8
+ctest --test-dir build          # 17 tests, no JUCE
+
+cmake -S . -B build-juce -DRTXX_WITH_JUCE=ON
+cmake --build build-juce -j8
+ctest --test-dir build-juce     # 19 tests, with JUCE</code></pre>
+    <p class="small">
+      If your <code>cmake</code> is the Homebrew one (x86_64), the AU is built for the wrong
+      architecture and a native <code>auval</code> will not load it. Use a native arm64 cmake, or pass
+      <code>-DCMAKE_OSX_ARCHITECTURES=arm64</code>.
+    </p>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-inner">
+    <p>
+      <strong>Vexx Audio</strong>, 2026. Retroexx is free to use and its source is open under
+      <a href="https://github.com/VexxPlugins/retroexx/blob/main/LICENSE">AGPL-3.0-or-later</a>.
+      No account, no licence key, no trial timer.
+    </p>
+    <p class="small">
+      Orbitron and Rajdhani are used under the SIL Open Font License. Built with JUCE.
+    </p>
+    <p class="small">
+      <a href="../">Vexx Audio</a> ·
+      <a href="https://github.com/VexxPlugins/retroexx">Source</a> ·
+      <a href="https://github.com/VexxPlugins/retroexx/blob/main/ROADMAP.md">Roadmap</a> ·
+      <a href="https://github.com/VexxPlugins/retroexx/blob/main/DESIGN.md">Design notes</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var d = document.documentElement;
+    var b = document.querySelector(".theme-toggle");
+    function label() {
+      b.setAttribute("aria-label", d.dataset.theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
+    }
+    label();
+    b.addEventListener("click", function () {
+      d.dataset.theme = d.dataset.theme === "dark" ? "light" : "dark";
+      try { localStorage.setItem("theme", d.dataset.theme); } catch (e) {}
+      label();
+    });
+  })();
+</script>
+
+</body>
+</html>

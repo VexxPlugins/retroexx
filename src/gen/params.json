@@ -1,0 +1,2274 @@
+{
+  "counts": {
+    "configParams": 123,
+    "stateMeta": 2,
+    "paramTable": 125,
+    "macros": 8,
+    "flux": 7
+  },
+  "groupCounts": {
+    "Digital": 17,
+    "Dist": 13,
+    "EQ": 24,
+    "Levels": 4,
+    "Magnetic": 20,
+    "Misc": 4,
+    "Noise": 8,
+    "SComp": 8,
+    "Space": 12,
+    "WaveViz": 2,
+    "Width": 2,
+    "Wobble": 11
+  },
+  "params": [
+    {
+      "id": "AudioPlayer_File",
+      "group": "Misc",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized",
+      "notes": [
+        "defaultValue es cadena (''): se emite 0 en una tabla float"
+      ]
+    },
+    {
+      "id": "Noise_Enable",
+      "group": "Noise",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": true,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Noise_Follow",
+      "group": "Noise",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 0.05,
+      "isBool": false,
+      "isEnum": false,
+      "format": "%.0f%%",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Noise_NoiseLevel_F_Smooth",
+      "group": "Noise",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.82,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Noise_NoiseLevel",
+      "group": "Noise",
+      "min": -78.0,
+      "max": 0.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "fitMiddle": -12,
+      "macroControlName": "MacroNoise",
+      "fluxParam": "<tabla>",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Noise_NoiseType",
+      "group": "Noise",
+      "min": 0.0,
+      "max": 15.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": true,
+      "options": {
+        "spec": "NoiseTypeSpec",
+        "labels": [
+          {
+            "value": 4,
+            "label": "VINYL 1",
+            "longLabel": "Vinyl 1"
+          },
+          {
+            "value": 12,
+            "label": "VINYL 2",
+            "longLabel": "Vinyl 2"
+          },
+          {
+            "value": 5,
+            "label": "7.5\"",
+            "longLabel": "Tape 7.5 ips"
+          },
+          {
+            "value": 6,
+            "label": "15\"",
+            "longLabel": "Tape 15 ips"
+          },
+          {
+            "value": 0,
+            "label": "TUBE",
+            "longLabel": "Tube U47 & Tape"
+          },
+          {
+            "value": 2,
+            "label": "DC",
+            "longLabel": "DC Noise & Hum"
+          },
+          {
+            "value": 3,
+            "label": "MUFF",
+            "longLabel": "Muff Stomp box"
+          },
+          {
+            "value": 13,
+            "label": "RADIO",
+            "longLabel": "Static Radio"
+          },
+          {
+            "value": 8,
+            "label": "VHS",
+            "longLabel": "VHS Machine"
+          },
+          {
+            "value": 9,
+            "label": "CASS",
+            "longLabel": "C90 Cassette Tape"
+          },
+          {
+            "value": 10,
+            "label": "8-BIT",
+            "longLabel": "8-bit Home Computer"
+          },
+          {
+            "value": 1,
+            "label": "WHITE",
+            "longLabel": "JP-8 White Noise"
+          },
+          {
+            "value": 11,
+            "label": "PINK",
+            "longLabel": "Pink-ish Noise"
+          },
+          {
+            "value": 7,
+            "label": "STUDIO 1",
+            "longLabel": "Studio Ambience 1"
+          },
+          {
+            "value": 14,
+            "label": "STUDIO 2",
+            "longLabel": "Studio Ambience 2"
+          },
+          {
+            "value": 15,
+            "label": "APOLLO",
+            "longLabel": "Apollo Lunar Lander"
+          }
+        ]
+      },
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Noise_Tone",
+      "group": "Noise",
+      "min": -12.0,
+      "max": 12.0,
+      "default": 0.5,
+      "isBool": false,
+      "isEnum": false,
+      "bipolar": true,
+      "format": "%.1f dB",
+      "fluxParam": "<tabla>",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Noise_GateLevel",
+      "group": "Noise",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Noise_RandomSeekEnable",
+      "group": "Noise",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": true,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "NoisePost",
+      "group": "Misc",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": true,
+      "isEnum": false,
+      "options": {
+        "spec": "PrePostSpec",
+        "labels": [
+          {
+            "value": 0,
+            "label": "Pre"
+          },
+          {
+            "value": 1,
+            "label": "Post"
+          }
+        ]
+      },
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "SComp_Enable",
+      "group": "SComp",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": true,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "SComp_Ratio",
+      "group": "SComp",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.5,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "SComp_Averaging",
+      "group": "SComp",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "SComp_GainComp",
+      "group": "SComp",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "SComp_Threshold",
+      "group": "SComp",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "format": "%.0f%%",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "SComp_Attack",
+      "group": "SComp",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "SComp_Release",
+      "group": "SComp",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.2,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "SComp_HiPassSidechain",
+      "group": "SComp",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "WaveVizOutputNoise_GainOutput",
+      "group": "WaveViz",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 4.0,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "WaveVizOutputNoise_LimitEnable",
+      "group": "WaveViz",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": true,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Wobble_Enable",
+      "group": "Wobble",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": true,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Wobble_LfoNoiseScaler",
+      "group": "Wobble",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncMul": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Wobble_LfoNoise",
+      "group": "Wobble",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "fluxParam": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Wobble_Depth",
+      "group": "Wobble",
+      "min": 0.0,
+      "max": 0.8,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "fitMiddle": 0.4,
+      "macroControlName": "MacroWobble",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Wobble_Depth2",
+      "group": "Wobble",
+      "min": 0.0,
+      "max": 0.2,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "fitMiddle": 0.1,
+      "macroControlName": "MacroWobble",
+      "fluxParam": "<tabla>",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Wobble_Xfade",
+      "group": "Wobble",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.5,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Wobble_Rate",
+      "group": "Wobble",
+      "min": 0.1,
+      "max": 4.0,
+      "default": 0.2,
+      "isBool": false,
+      "isEnum": false,
+      "fitMiddle": 1,
+      "format": "%.1f Hz",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Wobble_Rate2",
+      "group": "Wobble",
+      "min": 6.0,
+      "max": 20.0,
+      "default": 0.294,
+      "isBool": false,
+      "isEnum": false,
+      "fitMiddle": 10,
+      "format": "%.1f Hz",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Wobble_StereoPhase",
+      "group": "Wobble",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncFromTo": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Wobble_Stereo_Enable",
+      "group": "Wobble",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": true,
+      "isEnum": false,
+      "options": {
+        "spec": "MonoStereoSpec",
+        "labels": [
+          {
+            "value": 0,
+            "label": "Mono"
+          },
+          {
+            "value": 1,
+            "label": "Stereo"
+          }
+        ]
+      },
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Wobble_Mix",
+      "group": "Wobble",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "format": "%.0f%%",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Dist_Enable",
+      "group": "Dist",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": true,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Dist_Type",
+      "group": "Dist",
+      "min": 0.0,
+      "max": 7.0,
+      "default": 5.0,
+      "isBool": false,
+      "isEnum": true,
+      "options": {
+        "spec": "DistTypeSpec",
+        "labels": [
+          {
+            "value": 5,
+            "label": "TUBEPAIR",
+            "longLabel": "TubePair"
+          },
+          {
+            "value": 7,
+            "label": "IRON",
+            "longLabel": "IronTransformer"
+          },
+          {
+            "value": 0,
+            "label": "CRUNCH",
+            "longLabel": "Crunch"
+          },
+          {
+            "value": 1,
+            "label": "HEAVY",
+            "longLabel": "Heavy"
+          },
+          {
+            "value": 2,
+            "label": "ZAP",
+            "longLabel": "Zap"
+          },
+          {
+            "value": 6,
+            "label": "AIR",
+            "longLabel": "AirPressure"
+          }
+        ]
+      },
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Dist_Amount",
+      "group": "Dist",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "macroControlName": "MacroDist",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Dist_InGain",
+      "group": "Dist",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Dist_OutGain",
+      "group": "Dist",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Dist_InGain_Feed_F_Gain",
+      "group": "Dist",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Dist_InGain_Feed_F_Smooth",
+      "group": "Dist",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Dist_InGain_Feed",
+      "group": "Dist",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.5,
+      "isBool": false,
+      "isEnum": false,
+      "fluxParam": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Dist_MixFromAmount",
+      "group": "Dist",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncFromTo": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Dist_Mix",
+      "group": "Dist",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "format": "%.0f%%",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Dist_MixInternal",
+      "group": "Dist",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncMul": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Dist_FreqLo",
+      "group": "Dist",
+      "min": 20.0,
+      "max": 20000.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "type": "log",
+      "format": "%.0f Hz",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Dist_FreqHi",
+      "group": "Dist",
+      "min": 20.0,
+      "max": 20000.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "type": "log",
+      "format": "%.0f Hz",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Digital_Enable",
+      "group": "Digital",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": true,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Digital_AliasSmoothing",
+      "group": "Digital",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "format": "%.0f%%",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Digital_Mix",
+      "group": "Digital",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "format": "%.0f%%",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Digital_FocusMode",
+      "group": "Digital",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": true,
+      "options": {
+        "spec": "CutFocusSpec",
+        "labels": [
+          {
+            "value": 0,
+            "label": "Focus"
+          },
+          {
+            "value": 1,
+            "label": "Cut"
+          }
+        ]
+      },
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Digital_Focus",
+      "group": "Digital",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncFromTo": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Digital_DegradeModRate",
+      "group": "Digital",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Digital_AA2",
+      "group": "Digital",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.5,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Digital_AA3",
+      "group": "Digital",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.65,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Digital_RoundError",
+      "group": "Digital",
+      "min": 0.0,
+      "max": 1.0,
+      "default": -0.98,
+      "isBool": false,
+      "isEnum": false,
+      "type": "bipolar",
+      "defaultUnits": "scaled"
+    },
+    {
+      "id": "Digital_DegradeModDepth",
+      "group": "Digital",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Digital_Feedback",
+      "group": "Digital",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Digital_BitDepth",
+      "group": "Digital",
+      "min": 24.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "fitMiddle": 6,
+      "macroControlName": "MacroDigital",
+      "fluxParam": "<tabla>",
+      "minMaxInverted": true,
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "sin defaultValue/defaultScaled: se emite 0",
+        "min>max en el Lua (rango invertido a propósito); se conserva literal",
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Digital_DegradeSR_F_Smooth",
+      "group": "Digital",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.837,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncFromTo": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Digital_DegradeSR",
+      "group": "Digital",
+      "min": 44100.0,
+      "max": 44.1,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "fitMiddle": 200,
+      "macroControlName": "MacroDigital",
+      "fluxParam": "<tabla>",
+      "minMaxInverted": true,
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "sin defaultValue/defaultScaled: se emite 0",
+        "min>max en el Lua (rango invertido a propósito); se conserva literal",
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Digital_Xfade",
+      "group": "Digital",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.5,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Digital_FilterLo",
+      "group": "Digital",
+      "min": 20.0,
+      "max": 20000.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "type": "log",
+      "format": "%.0f Hz",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Digital_FilterHi",
+      "group": "Digital",
+      "min": 20.0,
+      "max": 20000.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "type": "log",
+      "format": "%.0f Hz",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Space_Enable",
+      "group": "Space",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": true,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Space_Level",
+      "group": "Space",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "macroControlName": "MacroSpace",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Space_StereoMode",
+      "group": "Space",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": true,
+      "options": {
+        "spec": "MonoStereoSpec",
+        "labels": [
+          {
+            "value": 0,
+            "label": "Mono"
+          },
+          {
+            "value": 1,
+            "label": "Stereo"
+          }
+        ]
+      },
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Space_Decay",
+      "group": "Space",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 0.8,
+      "isBool": false,
+      "isEnum": false,
+      "format": "%.0f%%",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Space_DualMono",
+      "group": "Space",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Space_PreDelay",
+      "group": "Space",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "format": "%.0f ms",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Space_PreWobbleNoiseAmount",
+      "group": "Space",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncCopy": "Space_Flux_Scaled",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Space_PreWobbleNoise",
+      "group": "Space",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "fluxParam": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Space_StereoDetune",
+      "group": "Space",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.3918,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Space_Dampen",
+      "group": "Space",
+      "min": 100.0,
+      "max": 16000.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "type": "log",
+      "fitMiddle": 1000,
+      "format": "%.0f Hz",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Space_Soften",
+      "group": "Space",
+      "min": 100.0,
+      "max": 16000.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "type": "log",
+      "fitMiddle": 1000,
+      "format": "%.0f Hz",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Space_EnableFeedBacks",
+      "group": "Space",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Magnetic_Enable",
+      "group": "Magnetic",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": true,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Magnetic_Xfade",
+      "group": "Magnetic",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.5,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Magnetic_Depth",
+      "group": "Magnetic",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "macroControlName": "MacroMagnetic",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Magnetic_DepthSteerSig_F_Gain",
+      "group": "Magnetic",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Magnetic_DepthSteerSig_F_Smooth",
+      "group": "Magnetic",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.837,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncFromTo": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Magnetic_DepthSteerSig",
+      "group": "Magnetic",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.5,
+      "isBool": false,
+      "isEnum": false,
+      "fluxParam": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Magnetic_WearDepth",
+      "group": "Magnetic",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "macroControlName": "MacroMagnetic",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Magnetic_DropOutsAmount",
+      "group": "Magnetic",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncMul": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Magnetic_DropOutsAmountMult1",
+      "group": "Magnetic",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncFromTo": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Magnetic_DropOutsAmountMult2",
+      "group": "Magnetic",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncMul": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Magnetic_DropOutsAmount_GUI",
+      "group": "Magnetic",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "format": "%.0f%%",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Magnetic_DropOutsMin",
+      "group": "Magnetic",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncFromTo": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Magnetic_DropOutsMax",
+      "group": "Magnetic",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncFromTo": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Magnetic_DropOutSteerSig_F_Smooth",
+      "group": "Magnetic",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncFromTo": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Magnetic_DropOutSteerSig",
+      "group": "Magnetic",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "fluxParam": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Magnetic_WearGain_F_Smooth",
+      "group": "Magnetic",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.837,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncFromTo": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Magnetic_WearGain",
+      "group": "Magnetic",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "fluxParam": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Magnetic_WearPanEnable",
+      "group": "Magnetic",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": true,
+      "isEnum": false,
+      "options": {
+        "spec": "MonoStereoSpec",
+        "labels": [
+          {
+            "value": 0,
+            "label": "Mono"
+          },
+          {
+            "value": 1,
+            "label": "Stereo"
+          }
+        ]
+      },
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Magnetic_WearPan",
+      "group": "Magnetic",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "fluxParam": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Magnetic_Rate",
+      "group": "Magnetic",
+      "min": 6.0,
+      "max": 30.0,
+      "default": 0.5,
+      "isBool": false,
+      "isEnum": false,
+      "fitMiddle": 20,
+      "format": "%.1f Hz",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "EQ_Post_Tone_MidFreq",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.5357,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "EQ_Post_Tone_MidGain",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.5,
+      "isBool": false,
+      "isEnum": false,
+      "bipolar": true,
+      "audioSyncFromTo": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "EQ_Post_Tone_MidQ",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.2,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "EQ_Post_Tone_Tilt",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.5,
+      "isBool": false,
+      "isEnum": false,
+      "bipolar": true,
+      "audioSyncCopy": "EQ_Post_Tone_Amount",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "EQ_Post_Tone_Mode",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": true,
+      "options": {
+        "spec": "TiltMidSpec",
+        "labels": [
+          {
+            "value": 0,
+            "label": "Tilt"
+          },
+          {
+            "value": 1,
+            "label": "Mid"
+          }
+        ]
+      },
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "EQ_Post_Tone_Tilt_Enable",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": true,
+      "isEnum": false,
+      "audioSyncFromTo": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "EQ_Post_Tone_Mid_Enable",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": true,
+      "isEnum": false,
+      "audioSyncCopy": "EQ_Post_Tone_Mode",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "EQ_Post_Tone_Amount",
+      "group": "EQ",
+      "min": 3.9810717055349722,
+      "max": 0.251188643150958,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "bipolar": true,
+      "macroControlName": "MacroMix",
+      "minMaxInverted": true,
+      "defaultUnits": "scaled",
+      "notes": [
+        "min>max en el Lua (rango invertido a propósito); se conserva literal"
+      ]
+    },
+    {
+      "id": "EQ_Post_Tone_GainComp",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncDummy": true,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "EQ_Post_CutLo_Mode",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": true,
+      "options": {
+        "spec": "SoftHardSpec",
+        "labels": [
+          {
+            "value": 0,
+            "label": "Soft"
+          },
+          {
+            "value": 1,
+            "label": "Hard"
+          }
+        ]
+      },
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "EQ_Post_CutHi_Mode",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": true,
+      "options": {
+        "spec": "SoftHardSpec",
+        "labels": [
+          {
+            "value": 0,
+            "label": "Soft"
+          },
+          {
+            "value": 1,
+            "label": "Hard"
+          }
+        ]
+      },
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "EQ_Post_CutHard_Lo_Enable",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": true,
+      "isEnum": false,
+      "audioSyncCopy": "EQ_Post_CutLo_Mode",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "EQ_Post_CutSoft_Lo_Enable",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": true,
+      "isEnum": false,
+      "audioSyncFromTo": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "EQ_Post_CutHard_Hi_Enable",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": true,
+      "isEnum": false,
+      "audioSyncCopy": "EQ_Post_CutHi_Mode",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "EQ_Post_CutSoft_Hi_Enable",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": true,
+      "isEnum": false,
+      "audioSyncFromTo": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "EQ_Post_CutHard_HiQ",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.5,
+      "isBool": false,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "EQ_Post_CutHard_LoQ",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.8,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncFromTo": "<tabla>",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "EQ_Post_CutHard_HiFreq",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncCopy": "EQ_Post_CutHiFreq",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "EQ_Post_CutHard_LoFreq",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncCopy": "EQ_Post_CutLoFreq",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "EQ_Post_CutSoft_HiFreq",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncCopy": "EQ_Post_CutHiFreq",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "EQ_Post_CutSoft_LoFreq",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncCopy": "EQ_Post_CutLoFreq",
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "EQ_Post_CutHiFreq",
+      "group": "EQ",
+      "min": 20.0,
+      "max": 20000.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "type": "log",
+      "format": "%.0f Hz",
+      "macroControlName": "MacroMix",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "EQ_Post_CutLoFreq",
+      "group": "EQ",
+      "min": 20.0,
+      "max": 20000.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "type": "log",
+      "format": "%.0f Hz",
+      "macroControlName": "MacroMix",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "EQ_Post_Enable",
+      "group": "EQ",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": true,
+      "isEnum": false,
+      "options": {
+        "spec": "createBoolOptionSpec",
+        "labels": [
+          {
+            "value": 0,
+            "label": "Off"
+          },
+          {
+            "value": 1,
+            "label": "On"
+          }
+        ]
+      },
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "Width_Width",
+      "group": "Width",
+      "min": 0.0,
+      "max": 200.0,
+      "default": 0.5,
+      "isBool": false,
+      "isEnum": false,
+      "bipolar": true,
+      "format": "%.0f%%",
+      "macroControlName": "MacroMix",
+      "defaultUnits": "normalized",
+      "unitsMismatch": true,
+      "notes": [
+        "default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático"
+      ]
+    },
+    {
+      "id": "Width_Enable",
+      "group": "Width",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": true,
+      "isEnum": false,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "InGain",
+      "group": "Levels",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncDummy": true,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "OutGain",
+      "group": "Levels",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "audioSyncDummy": true,
+      "defaultUnits": "normalized"
+    },
+    {
+      "id": "InLevel",
+      "group": "Levels",
+      "min": 0.12589254117941673,
+      "max": 7.943282347242816,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "bipolar": true,
+      "macroControlName": "MacroMix",
+      "defaultUnits": "scaled"
+    },
+    {
+      "id": "OutLevel",
+      "group": "Levels",
+      "min": 0.12589254117941673,
+      "max": 7.943282347242816,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "bipolar": true,
+      "macroControlName": "MacroMix",
+      "defaultUnits": "scaled"
+    },
+    {
+      "id": "version",
+      "group": "Misc",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false
+    },
+    {
+      "id": "savedWith",
+      "group": "Misc",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "notes": [
+        "valor no numérico en el Lua (index): se emite 0"
+      ]
+    }
+  ],
+  "macros": [
+    {
+      "id": "MacroNoise",
+      "group": "Macro",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "enableParamName": "MacroNoiseEnable",
+      "fluxName": "Noise",
+      "defaultValues": {
+        "Enable": false,
+        "Amount": 0,
+        "Flux": 0
+      },
+      "createGuiParams": true,
+      "createMacroForFeedbackLoop": false,
+      "syncedEnableParams": [
+        "Noise_Enable",
+        "SComp_Enable"
+      ],
+      "runtimeParams": [
+        {
+          "id": "MacroNoiseAmount",
+          "default": 0,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "MacroNoiseAmount_Scaled",
+          "default": 0,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "MacroNoiseEnable",
+          "default": 0.0,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "Noise_Flux",
+          "default": 0,
+          "derivedFrom": ":createFluxParams"
+        },
+        {
+          "id": "Noise_Flux_Scaled",
+          "default": 0,
+          "derivedFrom": ":createFluxParams"
+        }
+      ]
+    },
+    {
+      "id": "MacroDist",
+      "group": "Macro",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "enableParamName": "MacroDistEnable",
+      "fluxName": "Dist",
+      "defaultValues": {
+        "Enable": false,
+        "Amount": 0,
+        "Flux": 0
+      },
+      "createGuiParams": true,
+      "createMacroForFeedbackLoop": true,
+      "syncedEnableParams": [
+        "Dist_Enable"
+      ],
+      "runtimeParams": [
+        {
+          "id": "MacroDistAmount",
+          "default": 0,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "MacroDistAmount_Scaled",
+          "default": 0,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "MacroDistEnable",
+          "default": 0.0,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "Dist_Flux",
+          "default": 0,
+          "derivedFrom": ":createFluxParams"
+        },
+        {
+          "id": "Dist_Flux_Scaled",
+          "default": 0,
+          "derivedFrom": ":createFluxParams"
+        }
+      ]
+    },
+    {
+      "id": "MacroWobble",
+      "group": "Macro",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "enableParamName": "MacroWobbleEnable",
+      "fluxName": "Wobble",
+      "defaultValues": {
+        "Enable": false,
+        "Amount": 0,
+        "Flux": 0
+      },
+      "createGuiParams": true,
+      "createMacroForFeedbackLoop": true,
+      "syncedEnableParams": [
+        "Wobble_Enable"
+      ],
+      "runtimeParams": [
+        {
+          "id": "MacroWobbleAmount",
+          "default": 0,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "MacroWobbleAmount_Scaled",
+          "default": 0,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "MacroWobbleEnable",
+          "default": 0.0,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "Wobble_Flux",
+          "default": 0,
+          "derivedFrom": ":createFluxParams"
+        },
+        {
+          "id": "Wobble_Flux_Scaled",
+          "default": 0,
+          "derivedFrom": ":createFluxParams"
+        }
+      ]
+    },
+    {
+      "id": "MacroDigital",
+      "group": "Macro",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "enableParamName": "MacroDigitalEnable",
+      "fluxName": "Digital",
+      "defaultValues": {
+        "Enable": false,
+        "Amount": 0,
+        "Flux": 0
+      },
+      "createGuiParams": true,
+      "createMacroForFeedbackLoop": true,
+      "syncedEnableParams": [
+        "Digital_Enable"
+      ],
+      "runtimeParams": [
+        {
+          "id": "MacroDigitalAmount",
+          "default": 0,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "MacroDigitalAmount_Scaled",
+          "default": 0,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "MacroDigitalEnable",
+          "default": 0.0,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "Digital_Flux",
+          "default": 0,
+          "derivedFrom": ":createFluxParams"
+        },
+        {
+          "id": "Digital_Flux_Scaled",
+          "default": 0,
+          "derivedFrom": ":createFluxParams"
+        }
+      ]
+    },
+    {
+      "id": "MacroSpace",
+      "group": "Macro",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "enableParamName": "MacroSpaceEnable",
+      "fluxName": "Space",
+      "defaultValues": {
+        "Enable": false,
+        "Amount": 0,
+        "Flux": 0
+      },
+      "createGuiParams": true,
+      "createMacroForFeedbackLoop": true,
+      "syncedEnableParams": [
+        "Space_Enable"
+      ],
+      "runtimeParams": [
+        {
+          "id": "MacroSpaceAmount",
+          "default": 0,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "MacroSpaceAmount_Scaled",
+          "default": 0,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "MacroSpaceEnable",
+          "default": 0.0,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "Space_Flux",
+          "default": 0,
+          "derivedFrom": ":createFluxParams"
+        },
+        {
+          "id": "Space_Flux_Scaled",
+          "default": 0,
+          "derivedFrom": ":createFluxParams"
+        }
+      ]
+    },
+    {
+      "id": "MacroMagnetic",
+      "group": "Macro",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "enableParamName": "MacroMagneticEnable",
+      "fluxName": "Magnetic",
+      "defaultValues": {
+        "Enable": false,
+        "Amount": 0,
+        "Flux": 0
+      },
+      "createGuiParams": true,
+      "createMacroForFeedbackLoop": true,
+      "syncedEnableParams": [
+        "Magnetic_Enable"
+      ],
+      "runtimeParams": [
+        {
+          "id": "MacroMagneticAmount",
+          "default": 0,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "MacroMagneticAmount_Scaled",
+          "default": 0,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "MacroMagneticEnable",
+          "default": 0.0,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "Magnetic_Flux",
+          "default": 0,
+          "derivedFrom": ":createFluxParams"
+        },
+        {
+          "id": "Magnetic_Flux_Scaled",
+          "default": 0,
+          "derivedFrom": ":createFluxParams"
+        }
+      ]
+    },
+    {
+      "id": "MacroMix",
+      "group": "Macro",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "enableParamName": "MacroMixEnable",
+      "fluxName": "Mix",
+      "defaultValues": {
+        "Enable": true,
+        "Amount": 1,
+        "Flux": 0
+      },
+      "createGuiParams": false,
+      "createMacroForFeedbackLoop": false,
+      "syncedEnableParams": [],
+      "runtimeParams": [
+        {
+          "id": "MacroMixAmount",
+          "default": 1,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "MacroMixAmount_Scaled",
+          "default": 1,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "MacroMixEnable",
+          "default": 1.0,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "Mix_Flux",
+          "default": 0,
+          "derivedFrom": ":createFluxParams"
+        },
+        {
+          "id": "Mix_Flux_Scaled",
+          "default": 0,
+          "derivedFrom": ":createFluxParams"
+        }
+      ]
+    },
+    {
+      "id": "MacroFreeRunning",
+      "group": "Macro",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 1.0,
+      "isBool": false,
+      "isEnum": false,
+      "enableParamName": "MacroFreeRunningEnable",
+      "fluxName": "FreeRunning",
+      "defaultValues": {
+        "Enable": true,
+        "Amount": 1,
+        "Flux": 1
+      },
+      "createGuiParams": false,
+      "createMacroForFeedbackLoop": false,
+      "syncedEnableParams": [],
+      "runtimeParams": [
+        {
+          "id": "MacroFreeRunningAmount",
+          "default": 1,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "MacroFreeRunningAmount_Scaled",
+          "default": 1,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "MacroFreeRunningEnable",
+          "default": 1.0,
+          "derivedFrom": ":createMacroParams"
+        },
+        {
+          "id": "FreeRunning_Flux",
+          "default": 1,
+          "derivedFrom": ":createFluxParams"
+        },
+        {
+          "id": "FreeRunning_Flux_Scaled",
+          "default": 1,
+          "derivedFrom": ":createFluxParams"
+        }
+      ]
+    }
+  ],
+  "flux": [
+    {
+      "id": "<param>_F_Gain",
+      "group": "Flux",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.05,
+      "isBool": false,
+      "isEnum": false,
+      "name": "Gain",
+      "suffix": "_F_",
+      "noSuffix": false
+    },
+    {
+      "id": "<param>_F_Chaos",
+      "group": "Flux",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "name": "Chaos",
+      "suffix": "_F_",
+      "noSuffix": false
+    },
+    {
+      "id": "<param>_F_Smooth",
+      "group": "Flux",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.5,
+      "isBool": false,
+      "isEnum": false,
+      "name": "Smooth",
+      "suffix": "_F_",
+      "noSuffix": false
+    },
+    {
+      "id": "<param>_F_Decay",
+      "group": "Flux",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "name": "Decay",
+      "suffix": "_F_",
+      "noSuffix": false
+    },
+    {
+      "id": "<param>_F_ModStyle",
+      "group": "Flux",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "name": "ModStyle",
+      "suffix": "_F_",
+      "noSuffix": false
+    },
+    {
+      "id": "<param>_F_NoiseOut",
+      "group": "Flux",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0,
+      "isBool": false,
+      "isEnum": false,
+      "name": "NoiseOut",
+      "suffix": "_F_",
+      "noSuffix": false
+    },
+    {
+      "id": "<param>_Flux",
+      "group": "Flux",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.1,
+      "isBool": false,
+      "isEnum": false,
+      "name": "Flux",
+      "suffix": "_F_",
+      "noSuffix": true
+    }
+  ],
+  "runtimeOnly": [
+    {
+      "id": "MasterMacroScaler",
+      "min": 0.0,
+      "max": 100.0,
+      "default": 1.0,
+      "derivedFrom": ":createMacroParams"
+    },
+    {
+      "id": "TotalFlux",
+      "default": 1.0,
+      "derivedFrom": ":createFluxParams"
+    },
+    {
+      "id": "<param>_Unscaled",
+      "derivedFrom": "createScaledAndUnscaledParam (scaledSuffix=\"\", unscaledSuffix=\"_Unscaled\")",
+      "appliesTo": "cada param con macroControlName o fluxParam",
+      "evidence": "El estado guardado incluye InLevel_Unscaled, Noise_Tone_Unscaled, Width_Width_Unscaled, EQ_Post_Tone_Amount_Unscaled, EQ_Post_CutHiFreq_Unscaled, EQ_Post_CutLoFreq_Unscaled"
+    },
+    {
+      "id": "<param>_Flux / <param>_F_Gain ...",
+      "derivedFrom": "createFluxControlledParams (ya declara algunos, p.ej. Noise_NoiseLevel_F_Smooth)"
+    }
+  ],
+  "notes": [
+    "AudioPlayer_File: defaultValue es cadena (''): se emite 0 en una tabla float",
+    "Noise_Follow: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Noise_NoiseLevel: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Noise_Tone: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "SComp_Threshold: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Wobble_Depth: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Wobble_Depth2: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Wobble_Rate: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Wobble_Rate2: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Wobble_Mix: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Dist_Mix: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Dist_FreqLo: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Dist_FreqHi: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Digital_AliasSmoothing: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Digital_Mix: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Digital_BitDepth: sin defaultValue/defaultScaled: se emite 0",
+    "Digital_BitDepth: min>max en el Lua (rango invertido a propósito); se conserva literal",
+    "Digital_BitDepth: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Digital_DegradeSR: sin defaultValue/defaultScaled: se emite 0",
+    "Digital_DegradeSR: min>max en el Lua (rango invertido a propósito); se conserva literal",
+    "Digital_DegradeSR: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Digital_FilterLo: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Digital_FilterHi: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Space_Decay: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Space_PreDelay: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Space_Dampen: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Space_Soften: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Magnetic_DropOutsAmount_GUI: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Magnetic_Rate: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "EQ_Post_Tone_Amount: min>max en el Lua (rango invertido a propósito); se conserva literal",
+    "EQ_Post_CutHiFreq: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "EQ_Post_CutLoFreq: default en dominio normalizado y min/max reales: el default real exige la curva de escala (getScaled en C++), no resoluble estático",
+    "Width_Width: default en dominio normalizado y min/max reales: el default real exige la curva de escala, no resoluble en estático",
+    "savedWith: valor no numérico (index): se emite 0"
+  ],
+  "caveats": [
+    "El orden del modelo no es estable entre versiones: cruzar siempre por id, nunca por índice.",
+    "min/max/default son unidades del modelo (float). Donde el control nativo guarda dB, el modelo guarda el lineal (FromDecibel).",
+    "Los params de macro y de Flux no están en ParamTable (count()==125 por contrato); están en las listas \"macros\"/\"flux\" de este json."
+  ]
+}

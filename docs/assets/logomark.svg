@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Marca "Agent-Circuit" de Retroexx. Geometria literal de DESIGN.md §3:
+     hexagono (escudo) de radio 44 con vertice arriba y centro en (60,60), trazo
+     #7B1E3A de 3 px e interior #F3F4F6; 6 radios #2E3338 del centro a cada
+     vertice con nodo #7B1E3A de radio 4 en la punta; nucleo #FFC94A de radio 9
+     con punto central #2E3338 de radio 2.5. Solo fill/stroke solidos.
+     Este fichero es el unico origen del logo: el editor lo dibuja desde aqui. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <path d="M 60 16 L 98.105 38 L 98.105 82 L 60 104 L 21.895 82 L 21.895 38 Z"
+        fill="#F3F4F6" stroke="#7B1E3A" stroke-width="3" stroke-linejoin="miter"/>
+  <g stroke="#2E3338" stroke-width="1.5">
+    <line x1="60" y1="60" x2="60" y2="16"/>
+    <line x1="60" y1="60" x2="98.105" y2="38"/>
+    <line x1="60" y1="60" x2="98.105" y2="82"/>
+    <line x1="60" y1="60" x2="60" y2="104"/>
+    <line x1="60" y1="60" x2="21.895" y2="82"/>
+    <line x1="60" y1="60" x2="21.895" y2="38"/>
+  </g>
+  <g fill="#7B1E3A">
+    <circle cx="60" cy="16" r="4"/>
+    <circle cx="98.105" cy="38" r="4"/>
+    <circle cx="98.105" cy="82" r="4"/>
+    <circle cx="60" cy="104" r="4"/>
+    <circle cx="21.895" cy="82" r="4"/>
+    <circle cx="21.895" cy="38" r="4"/>
+  </g>
+  <circle cx="60" cy="60" r="9" fill="#FFC94A"/>
+  <circle cx="60" cy="60" r="2.5" fill="#2E3338"/>
+</svg>
