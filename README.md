@@ -6,6 +6,10 @@
 ![Platform](https://img.shields.io/badge/macOS-AU%20%C2%B7%20VST3-2E3338?style=flat-square)
 ![JUCE](https://img.shields.io/badge/JUCE-8.0.13-FFC94A?style=flat-square)
 
+**[Download Retroexx 0.1.0 for macOS](https://github.com/VexxPlugins/retroexx/releases/latest)**:
+universal build with the AU, the VST3 and a standalone app. macOS 12 or newer. Unzip, double click
+`Install.command`, done.
+
 ![The Retroexx editor with all six modules active and their visualisers](docs/images/retroexx-editor.png)
 
 Six modules in series across a mix or an instrument: surface noise, wow and flutter, tape wear,
@@ -61,10 +65,15 @@ cmake -S . -B build
 cmake --build build -j8
 ctest --test-dir build
 
-# Plugin AU + VST3 (downloads JUCE 8.0.13 the first time)
+# Plugin AU + VST3 + standalone app (downloads JUCE 8.0.13 the first time)
 cmake -S . -B build-juce -DRTXX_WITH_JUCE=ON
 cmake --build build-juce -j8
 ctest --test-dir build-juce
+
+# Release: universal (Apple Silicon + Intel), what the zip ships
+cmake -S . -B build-dist -DRTXX_WITH_JUCE=ON -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"
+cmake --build build-dist -j10
 ```
 
 Mind the architecture: if the `cmake` you use is the Homebrew one (`/usr/local/bin`, x86_64), the AU
@@ -73,12 +82,25 @@ is built for x86_64 and a native arm64 `auval` will not load it. Use a native ar
 
 ## Install
 
-For now the plugin is built from source: there are no signed or notarised binaries.
+The release zip carries the AU, the VST3 and a standalone app, universal for Apple Silicon and
+Intel. `Install.command` copies the two plugin formats into your user folder and clears the
+quarantine flag:
 
 ```bash
-cp -R build-juce/src/plugin/Retroexx_artefacts/Release/AU/Retroexx.component \
+~/Library/Audio/Plug-Ins/Components/Retroexx.component
+~/Library/Audio/Plug-Ins/VST3/Retroexx.vst3
+```
+
+The build is signed ad hoc, not notarized, because notarization needs a paid Apple Developer
+account. macOS will say "unidentified developer" the first time: right click, Open. Nothing here
+needs an admin password.
+
+From source:
+
+```bash
+cp -R build-dist/src/plugin/Retroexx_artefacts/Release/AU/Retroexx.component \
       ~/Library/Audio/Plug-Ins/Components/
-cp -R build-juce/src/plugin/Retroexx_artefacts/Release/VST3/Retroexx.vst3 \
+cp -R build-dist/src/plugin/Retroexx_artefacts/Release/VST3/Retroexx.vst3 \
       ~/Library/Audio/Plug-Ins/VST3/
 killall AudioComponentRegistrar
 auval -v aufx Rtxx Vexx        # AU VALIDATION SUCCEEDED

@@ -69,7 +69,7 @@ juce_add_plugin(Retroexx
   PRODUCT_NAME "Retroexx"
   PLUGIN_NAME "Retroexx"
   DESCRIPTION "Character, noise and space processor"
-  FORMATS AU VST3
+  FORMATS AU VST3 Standalone
   AU_MAIN_TYPE kAudioUnitType_Effect
   VST3_CATEGORIES Fx
   IS_SYNTH FALSE
@@ -77,7 +77,11 @@ juce_add_plugin(Retroexx
   NEEDS_MIDI_INPUT FALSE
   NEEDS_MIDI_OUTPUT FALSE
   EDITOR_WANTS_KEYBOARD_FOCUS FALSE
-  COPY_PLUGIN_AFTER_BUILD FALSE)
+  COPY_PLUGIN_AFTER_BUILD FALSE
+  # El standalone abre el dispositivo de entrada para procesar audio en vivo: macOS exige
+  # declarar el uso del microfono o mata la app al pedirlo.
+  MICROPHONE_PERMISSION_ENABLED TRUE
+  MICROPHONE_PERMISSION_TEXT "Retroexx processes live audio from the input device you choose.")
 
 # Nunca hubo un VST2 de este plugin: los ids de parametro no tienen que sobrevivir a un
 # VST2 historico (el aviso de JUCE es solo para proyectos que ya publicaron VST2).
