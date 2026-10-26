@@ -138,6 +138,16 @@ h2 {
   text-wrap: balance;
 }
 
+h3 {
+  font-family: "Orbitron", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  font-size: var(--t2);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  margin: var(--s6) 0 var(--s3);
+  text-wrap: balance;
+}
+
 p {
   margin: 0 0 var(--s4);
 }
